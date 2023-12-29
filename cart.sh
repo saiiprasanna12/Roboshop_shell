@@ -35,7 +35,7 @@ yum install mysql -y  &>> LOGFILE
 
 VALIDATE $? "MYSQL"
 
-yum istall git -y  &>> LOGFILE
+yum install git -y  &>> LOGFILE
 
 VALIDATE $? "GIT"
 
