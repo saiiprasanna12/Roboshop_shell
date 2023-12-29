@@ -47,11 +47,17 @@ dnf install nodejs -y &>> $LOG_FILE
 
 VALIDATE $? "Instaling nodejs" 
 
-useradd roboshop 
+id roboshop
 
-VALIDATE $? "creating the user"
+if [ $? -ne 0 ]
+then
+    useradd roboshop 
+    VALIDATE $? "roboshop user creation"
+else
+    echo -e "roboshop user already exist $Y skipping $N"
+fi
 
-mkdir /app
+mkdir -p /app
 
 VALIDATE $? "creating the app directory"
 
@@ -61,7 +67,7 @@ VALIDATE $? "downloading the catalogue application"
 
 cd /app 
 
-unzip /tmp/catalogue.zip &>> $LOG_FILE
+unzip -o /tmp/catalogue.zip &>> $LOG_FILE
 
 VALIDATE $? "unzip the catalogue application"
 
