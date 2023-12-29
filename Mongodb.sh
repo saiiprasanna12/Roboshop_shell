@@ -16,7 +16,7 @@ VALIDATE()
 if [ $1 -ne 0 ]
 then
 
-echo -e "$2  is $R failed $N"
+echo -e "$2  is $R failed $N"s
 exit1
 
 else
@@ -34,9 +34,31 @@ else
      echo "you are in root user"
 fi
 
-cp mongodb.repo /etc/yum.repos.d/mongodb.repo
+cp mongodb.repo /etc/yum.repos.d/mongodb.repo  &>> $LOG_FILE
 
 VALIDATE $? "copied to mongodb repo"
+
+dnf install mongodb-org -y &>> $LOG_FILE
+
+VALIDATE $? "installed mongodb"
+
+systemctl enable mongod &>> $LOG_FILE
+ 
+VALIDATE $? "enable mongodb"
+
+systemctl start mongod &>> $LOG_FILE
+
+VALIDATE $? "starting mongodb"
+
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>> $LOG_FILE
+
+VALIDATE $? "editing remote access to mongodb"
+
+systemctl restart mongod &>> $LOG_FILE
+
+VALIDATE $? "Restarting mongodb"
+
+
 
 
 
