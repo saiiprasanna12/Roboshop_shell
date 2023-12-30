@@ -94,7 +94,7 @@ systemctl start catalogue &>> $LOG_FILE
 
 VALIDATE $? "start the catalogue"
 
-cp  /home/centos/Roboshop_shell/mongodb.repo /etc/yum.repos.d/mongo.repo  &>> $LOG_FILE
+cp  /home/centos/Roboshop_shell/mongodb.repo /etc/yum.repos.d/mongodb.repo  &>> $LOG_FILE
 
 VALIDATE $? "coping the mongodbrepo"
 
