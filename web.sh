@@ -1,6 +1,6 @@
 #!/bin/bash
 
-D=$(id -u)
+ID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -61,7 +61,7 @@ unzip -o /tmp/web.zip &>> $LOG_FILE
 
 VALIDATE $? "unzipping web content"
 
-cp cp /home/centos/Roboshop_shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
+cp  /home/centos/Roboshop_shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> $LOG_FILE
 
 VALIDATE $? "copied the roboshop reverse proxy config"
 
