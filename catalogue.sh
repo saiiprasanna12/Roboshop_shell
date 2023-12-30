@@ -47,7 +47,7 @@ dnf install nodejs -y &>> $LOG_FILE
 
 VALIDATE $? "Instaling nodejs" 
 
-id roboshop
+id roboshop #if roboshop user doesnot exist,then it is failure
 
 if [ $? -ne 0 ]
 then

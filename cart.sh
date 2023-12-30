@@ -17,7 +17,8 @@ VALIDATE()
 {
   if [ $1 -ne 0 ]
   then
-       echo -e  "installing $2 is $R failed $N" &>> LOGFILE
+       echo -e  "installing $2 is $R failed $N" 
+       exit1 
   else 
        echo -e "installing $2 is $G success $N"
   fi
@@ -26,10 +27,10 @@ VALIDATE()
 if [ $ID -ne 0]
 then 
      echo -e " $R ERROR:please run with root user $N"  &>> LOGFILE
-     exit 1
+     exit 1 # you can give other than 0
 else
     echo -e "$G you are in root user $N"
-fi
+fi # fi means reverse of if, indicating condition end
 
 yum install mysql -y  &>> LOGFILE
 
