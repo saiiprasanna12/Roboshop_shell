@@ -17,7 +17,7 @@ VALIDATE()
 if [ $1 -ne 0 ]
 then
 
-echo -e "$2  is $R failed $N"s
+echo -e "$2  is $R failed $N"
 exit1
 
 else

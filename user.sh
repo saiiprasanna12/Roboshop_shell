@@ -9,19 +9,19 @@ MONGODBHOST=mongodb.daws12.online
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 
-LOGFILE="/tmp/$0-$TIMESTAMP.log"
+LOG_FILE="/tmp/$0-$TIMESTAMP.log"
 
-echo "script started executed at $TIMESTAMP"  &>> LOGFILE
+echo "script started executed at $TIMESTAMP"  &>> $LOG_FILE
 
 
 VALIDATE()
 {
   if [ $1 -ne 0 ]
   then
-       echo -e  "installing $2 is $R failed $N" 
+       echo -e  "$2 is $R failed $N" 
        exit1 
   else 
-       echo -e "installing $2 is $G success $N"
+       echo -e "$2 is $G success $N"
   fi
 }
 
