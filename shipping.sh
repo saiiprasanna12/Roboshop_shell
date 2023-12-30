@@ -35,7 +35,7 @@ else
      echo "you are in root user"
 fi
 
-dnf install maven -y
+dnf install maven -y &>> $LOG_FILE
 
 VALIDATE $? "Installing the maven"
 
@@ -53,13 +53,13 @@ mkdir -p /app
 
 VALIDATE $? "creating the app directory"
 
-curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip
+curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>> $LOG_FILE
 
 VALIDATE $? "download the shipping application"
 
 cd /app
 
-unzip -o /tmp/shipping.zip
+unzip -o /tmp/shipping.zip &>> $LOG_FILE
 
 VALIDATE $? "unzip the shipping application"
 
@@ -67,7 +67,9 @@ cd /app
 
 mvn clean package
 
-mv target/shipping-1.0.jar shipping.jar
+mv target/shipping-1.0.jar shipping.jar &>> $LOG_FILE
+
+VALIDATE $? "renaming jar file"
 
 cp /home/centos/Roboshop_shell/shipping.service /etc/systemd/system/shipping.service &>> $LOG_FILE
 
