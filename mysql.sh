@@ -40,7 +40,7 @@ dnf module disable mysql -y &>> $LOG_FILE
 
 VALIDATE $? "Disable current mysql version"
 
-cp mysql.repo /etc/yum.repos.d/mysql.repo &>> $LOG_FILE
+cp /home/centos/Roboshop_shell/mysql.repo /etc/yum.repos.d/mysql.repo &>> $LOG_FILE
 
 VALIDATE $? "copied mysql repo"
 

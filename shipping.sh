@@ -65,7 +65,7 @@ VALIDATE $? "unzip the shipping application"
 
 cd /app
 
-mvn clean package
+mvn clean package &>> $LOG_FILE
 
 mv target/shipping-1.0.jar shipping.jar &>> $LOG_FILE
 
